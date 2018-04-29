@@ -1,0 +1,48 @@
+span strong {
+    margin-right: 0.5em;
+}
+
+span {
+    margin-right: 2em;
+}
+
+p, h3 {
+    display: inline-block;
+}
+
+.header {
+    color: white;
+    background-color: gray;
+}
+
+.header h1 {
+    line-height: 80px;
+    margin-left: 20px;
+}
+
+h2 {
+    background-color: lightgray;
+    float: left;
+    width: 100px;
+    line-height: 120px;
+    border-bottom: 1px solid white;
+}
+
+.detail {
+    margin-left: 120px;
+    padding-top: 10px;
+}
+
+.basic,
+.contact,
+.ability,
+.edu,
+.exp {
+	width: 100%;
+	height: 120px;
+	border-bottom: 1px solid #AAAAAA;
+}
+
+* {
+    margin: 0;
+}

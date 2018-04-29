@@ -1,4 +1,24 @@
-header {
+body {
+    margin: 0, auto;
+}
+
+span strong {
+    margin-right: 0.5em;
+}
+
+span {
+    margin-right: 2em;
+}
+
+p {
+    margin-top: 0px;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+.header {
     color: white;
     background-color: rgb(101, 165, 250);
     width: 15%;
@@ -8,11 +28,11 @@ header {
     padding-top: 40px;
 }
 
-header h1 {
+.header h1 {
     font-size: 40px;
 }
 
-main {
+.main {
     width: 85%;
     height: 100%;
     padding-left: 20px;
