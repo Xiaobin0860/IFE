@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -15,8 +16,21 @@ html, body {
 
 #header-content {
     width: 960px;
+    height: 100px;
     margin: 0 auto;
     background-color: red;
+    position: relative;
+}
+.logo {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    line-height: 100px;
+}
+.links {
+    display: inline-block;
+    position: absolute;
+    right:0;
 }
 
 .banner {
@@ -34,6 +48,14 @@ html, body {
     position: absolute;
     right: 0;
     bottom: 0;
+    color: white;
+}
+.indicators ul,h4 {
+    display: inline-block;
+}
+.indicators a {
+    text-decoration:none;
+    background-color: white;
 }
 
 .container {
@@ -54,9 +76,16 @@ html, body {
     position: relative;
 }
 
-.main .navbar {
+.navbar {
     padding-top: 10px;
     padding-left: 20px;
+    overflow: hidden;
+}
+.navbar a {
+    text-decoration:none;
+    border: solid 1px gray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .footer {
