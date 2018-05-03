@@ -1,0 +1,9 @@
+.inline {
+    display: inline;
+    border: solid 1px lightgreen;
+}
+
+.block {
+    display: block;
+    border: solid 1px lightsalmon;
+}

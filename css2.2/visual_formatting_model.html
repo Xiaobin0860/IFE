@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visual Formatting Model</title>
+    <link rel="stylesheet" href="css/style_vfm.css">
+</head>
+
+<body>
+    <h2>Anonymous block boxes</h2>
+    <div class="block">
+        some text
+        <p class="block">more text</p>
+    </div>
+    <hr />
+    <p class="inline">
+        this is anonymous text before the span.
+        <span class="block">this is the content of span.</span>
+        this is anonymous text after the span.
+    </p>
+    <h2>Anonymous inline boxes</h2>
+    <p class="block">Some <em class="inline">emphasized</em> text</p>
+</body>
+
+</html>
