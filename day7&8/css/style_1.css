@@ -64,7 +64,6 @@ html, body {
 }
 
 .container {
-    border-top: solid 1px gray;
     display: flex;
     flex-wrap: wrap;
 }
@@ -91,20 +90,29 @@ html, body {
 }
 
 .navbar {
-    overflow: hidden;
-    margin: 20px 0 0 20px;
-    display: flex;
+    height: 60px;
+    position: relative;
 }
-.navbar a {
-    text-decoration:none;
+.navbar ul {
+    border-bottom: solid 1px gray;
+    position: relative;
+    height: 100%;
+    list-style-type: none;
+}
+.navbar li {
     border: solid 1px gray;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding: 10px;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+    height: 40px;
     background-color: lightgray;
+    float: left;
+    margin-top: 20px;
 }
 #active-bar {
     background-color: white;
+    border-bottom: 0;
 }
 
 .footer {
