@@ -24,7 +24,7 @@ main {
 }
 header {
     background: url("../imgs/header_bg.png") no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
     color: white;
 }
 .title {text-align: center;}
@@ -54,16 +54,21 @@ header {
 .inline-block {
     display: inline-block;
 }
-
+.awesome {
+    padding: 10%;
+}
 .awesome h3 {
     margin-top: 0;
 }
 .awesome-item {
-    max-width: 400px;
     text-align: left;
+    flex: 0 0 40%;
 }
 .awesome-item div {
     margin-left: 30px;
+}
+.awesome-item p {
+    max-width: 300px;
 }
 .awesome-item img {
     width: 50px;
@@ -85,13 +90,16 @@ footer {
     flex-direction: column;
 }
 .flex-fixed {
-    flex: auto;
+    flex: 0 0 auto;
 } 
 .flex-wap {
     flex-wrap: wrap;
 }
 .align-start {
     align-items: flex-start;
+}
+.align-center {
+    align-items: center;
 }
 .align-baseline {
     align-items: flex-baseline;
@@ -105,9 +113,28 @@ footer {
 
 .smart-car {
     background: url("../imgs/smart-car_bg.png") no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
+    color: white;
 }
-
+.smart-car .background {
+    padding: 8% 0 8% 12%;
+}
+.smart-car-text {
+    margin-right: 10%;
+    text-align: left;
+}
+.smart-car-text p {
+    margin: 2em 3em 2em 0;
+}
 .footer {
     max-width: 270px;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.text-left {
+    text-align: left;
 }
