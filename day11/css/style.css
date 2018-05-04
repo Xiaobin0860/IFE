@@ -4,6 +4,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background-color: white;
+    min-width: 850px;
 }
 
 main {
@@ -15,13 +16,58 @@ main {
 .feature {
     border-top: solid 1px lightgray;
     border-bottom: solid 1px white;
+    text-align: center;
+}
+.background {
+    background-color: rgba(20, 20, 20, 0.6);
+    padding: 10%;
+}
+header {
+    background: url("../imgs/header_bg.png") no-repeat;
+    background-size: 100%;
+    color: white;
+}
+.title {text-align: center;}
+.title p {
+    width: 70%;
+    margin: 0 auto;
+    color: lightgray;
+}
+.signup {
+    border: solid 1px lightgrey;
+    text-align: center;
+    color: white;
+    margin-top: 3em;
+}
+.signup h2 {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.signup p {
+    margin-top: 0;
+    color: lightgray;
+}
+.signup form {
+    margin-bottom: 2em;
 }
 
-header {
-    background-image: url("../imgs/header_bg.png");
-    background-repeat: no-repeat;
-    /* max-width: 1600px;
-    margin: 0 auto; */
+.inline-block {
+    display: inline-block;
+}
+
+.awesome h3 {
+    margin-top: 0;
+}
+.awesome-item {
+    max-width: 400px;
+    text-align: left;
+}
+.awesome-item div {
+    margin-left: 30px;
+}
+.awesome-item img {
+    width: 50px;
+    height: 50px;
 }
 
 footer {
@@ -38,6 +84,18 @@ footer {
     display: flex;
     flex-direction: column;
 }
+.flex-fixed {
+    flex: auto;
+} 
+.flex-wap {
+    flex-wrap: wrap;
+}
+.align-start {
+    align-items: flex-start;
+}
+.align-baseline {
+    align-items: flex-baseline;
+}
 .around {
     justify-content: space-around;
 }
@@ -46,8 +104,8 @@ footer {
 }
 
 .smart-car {
-    background-image: url("../imgs/smart-car_bg.png");
-    background-repeat: no-repeat;
+    background: url("../imgs/smart-car_bg.png") no-repeat;
+    background-size: 100%;
 }
 
 .footer {
