@@ -138,3 +138,27 @@ footer {
 .text-left {
     text-align: left;
 }
+
+.products {
+    padding: 10%;
+}
+.products h2 {
+    margin-bottom: 2em;
+}
+.products-item {
+    max-width: 270px;
+}
+.how-item {
+    margin: 5%;
+    padding: 0 5% 0 5%;
+}
+.how-item img {
+    width: 60%;
+    height: 30%;
+    /* overflow: hidden; */
+    max-height: 350px;
+    /* clip: rect(0px, 0px, 570px, 350px); */
+}
+.order-1 {
+    order: -1;
+}
