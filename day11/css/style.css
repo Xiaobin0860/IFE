@@ -162,3 +162,25 @@ footer {
 .order-1 {
     order: -1;
 }
+.crew {
+    padding: 5%;
+}
+.crew img {
+    flex: 1 1 40%;
+    margin: 20px;
+}
+.contacts {
+    text-align: left;
+    padding: 5%;
+}
+.feedback {
+    border: solid 1px lightgray;
+    flex: 1 1 40%;
+    text-align: center;
+}
+.feedback h3, input {
+    margin: 5%;
+}
+div.contacts {
+    flex: 1 1 40%;
+}
