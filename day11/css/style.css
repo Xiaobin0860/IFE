@@ -98,6 +98,9 @@ footer {
 .align-start {
     align-items: flex-start;
 }
+.align-end {
+    align-items: flex-end;
+}
 .align-center {
     align-items: center;
 }
