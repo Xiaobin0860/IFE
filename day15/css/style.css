@@ -38,7 +38,10 @@ nav {
 }
 #menu img {
     flex: 0 0 16px;
-    height: 16px;
+    width: 24px;
+}
+.item {
+    margin: 10px 0 10px 0;
 }
 .item img {
     padding-right: 10px;
@@ -98,4 +101,20 @@ header {
     border: solid 1px red;
     border-radius: 50%;
     background-color: red;
+}
+.head {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding-right: 40px;
+}
+.head .status {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+header {
+    padding: 0 40px 0 40px;
 }
