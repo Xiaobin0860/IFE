@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <hr />
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn" onclick="calc(this.id)">加</button>
+    <button id="minus-btn" onclick="calc(this.id)">减</button>
+    <button id="times-btn" onclick="calc(this.id)">乘</button>
+    <button id="divide-btn" onclick="calc(this.id)">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        function calc(btn) {
+            console.log(btn);
+            var a = parseInt(document.getElementById("first-number").value);
+            var b = parseInt(document.getElementById("second-number").value);
+            console.log("a=" + a);
+            console.log("b=" + b);
+            switch (btn) {
+                case "add-btn":
+                    document.getElementById("result").innerHTML = a + b;
+                    break;
+                case "minus-btn":
+                    document.getElementById("result").innerHTML = a - b;
+                    break;
+                case "times-btn":
+                    document.getElementById("result").innerHTML = a * b;
+                    break;
+                case "divide-btn":
+                    if (0 == b) {
+                        console.log("除数不能为0!");
+                        return;
+                    }
+                    document.getElementById("result").innerHTML = a / b;
+                    break;
+            }
+        }
+    </script>
+    <hr />
+    <input id="dec-number" type="number" value="0" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" value="0" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn" onclick="trans()">转化为二进制</button>
+    <p id="trans-result">运算结果</p>
+    <script>
+
+        function dec2bin(decNumber) {
+            if (0 == decNumber) return "0";
+            var result = "";
+            while (decNumber) {
+                result = decNumber % 2 + result;
+                decNumber = Math.floor(decNumber / 2);
+            }
+            return result;
+        }
+        function trans() {
+            var num = parseInt(document.getElementById("dec-number").value);
+            var bit = parseInt(document.getElementById("bin-bit").value);
+            console.log("num=" + num + ", bin=" + dec2bin(num) + ", half=" + num / 2 + ", bit=" + bit);
+            var bin = dec2bin(num);
+            if (bit > bin.length) {
+                bin = "0".repeat(bit - bin.length) + bin;
+            }
+            else if (bit < bin.length) {
+                console.log("bit < length!");
+            }
+            document.getElementById("trans-result").innerHTML = bin;
+        }
+
+    </script>
+    <hr />
+    <script>
+        for (var i = 1; i <= 9; ++i) {
+            var line = "";
+            for (var j=1; j<=9; ++j)
+            {
+                line += "\t" + j + "*" + i + "=" + j*i;
+            }
+            console.log(line);
+        }
+    </script>
+    <table border="1px">
+        <tr>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+        </tr>
+        <tr>
+            <td>1*1=1</td><td>2*1=2</td><td>3*1=3</td><td>4*1=4</td><td>5*1=5</td><td>6*1=6</td><td>7*1=7</td><td>8*1=8</td><td>9*1=9</td>
+        </tr>
+        <tr>
+            <td>1*2=2</td><td>2*2=4</td><td>3*2=6</td><td>4*2=8</td><td>5*2=10</td><td>6*2=12</td><td>7*2=14</td><td>8*2=16</td><td>9*2=18</td>
+        </tr>
+    </table>
+</body>
+
+</html>
