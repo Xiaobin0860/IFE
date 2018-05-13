@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        select {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="name" type="text" onkeypress="on_name_input_keypress(this, event)">
+    <button id="submit-btn" onclick="on_submit_btn_lick()">Submit</button>
+    <hr />
+    <label>
+        <input id="school" name="status" type="radio" onchange="on_status_radio_changed()"> School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio" onchange="on_status_radio_changed()"> Company
+    </label>
+
+    <select id="school-select">
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select">
+        <option>百度</option>
+        <option>爱奇艺</option>
+    </select>
+
+    <script>
+        function on_submit_btn_lick() {
+            console.log(document.getElementById("name").value);
+        }
+        function on_name_input_keypress(name, e) {
+            console.log(e);
+            switch (e.charCode) {
+                case 13:
+                    on_submit_btn_lick();
+                    break;
+                case 27:
+                    name.value = "";
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+        function on_status_radio_changed() {
+            var school = document.getElementById("school");
+            var school_sel = document.getElementById("school-select");
+            var company_sel = document.getElementById("company-select");
+            console.log(school.checked);
+            if (school.checked) {
+                school_sel.style.display = "block";
+                company_sel.style.display = "none";
+            }
+            else {
+                school_sel.style.display = "none";
+                company_sel.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
