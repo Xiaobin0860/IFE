@@ -17,6 +17,13 @@
             border: 1px solid #000;
             cursor: pointer;
         }
+
+        #erikface {
+            width: 480px;
+            height: 480px;
+            background-image: url(./erik_ce204002.jpg);
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 
@@ -33,10 +40,13 @@
     </ul>
 
     <p class="color-picker"></p>
-
+    <br />
     <hr />
     <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
     <button id="fade-btn" onclick="on_fade_btn_click(this)">淡出</button>
+    <br />
+    <hr />
+    <div id="erikface"></div>
 
     <script>
         // var list = document.querySelectorAll("li");
@@ -79,13 +89,23 @@
             var timer = setInterval(function () {
                 from_a += step;
                 fade.style.backgroundColor = "rgba(0,0,0," + from_a + ")";
-                if (Math.abs(to_a-from_a) < 0.001) {
+                if (Math.abs(to_a - from_a) < 0.001) {
                     clearInterval(timer);
                     btn.removeAttribute("disabled");
                     btn.innerHTML = txt;
                 }
             }, 50);
         }
+
+        var face = document.getElementById("erikface");
+        var frame_count = 17;
+        var offset = -480;
+        var cur_frame = 0;
+        setInterval(function() {
+            cur_frame %= frame_count;
+            face.style.backgroundPositionY = cur_frame*offset+"px";
+            ++cur_frame;
+        }, 90);
     </script>
 </body>
 
