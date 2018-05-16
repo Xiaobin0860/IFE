@@ -28,6 +28,39 @@
         <button id="8" onclick="on_click(this)">返回 A 和 B 中的最低值</button>
     </div>
     <p id="result"></p>
+    <br />
+    <hr />
+    <div>
+        <label>String A:
+            <input id="sradio-a" type="radio" checked="true" name="str-obj" value="a">
+        </label>
+        <textarea id="str-a"></textarea>
+        <label>String B:
+            <input id="sradio-b" type="radio" name="str-obj" value="b">
+        </label>
+        <textarea id="str-b"></textarea>
+        <label>Num A：
+            <input id="snum-a" type="number" value="0">
+        </label>
+        <label>Num B：
+            <input id="snum-b" type="number" value="1">
+        </label>
+    </div>
+    <div>
+        <button id="s1" onclick="on_sclick(this)">获取当前选中输入的内容长度</button>
+        <button id="s2" onclick="on_sclick(this)">当前选中输入中的第3个字符</button>
+        <button id="s3" onclick="on_sclick(this)">把两个输入框的文字连接在一起输出（concat）</button>
+        <button id="s4" onclick="on_sclick(this)">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+        <button id="s5" onclick="on_sclick(this)">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+        <button id="s6" onclick="on_sclick(this)">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+        <button id="s7" onclick="on_sclick(this)">当前选中输入框的行数</button>
+        <button id="s8" onclick="on_sclick(this)">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+        <button id="s9" onclick="on_sclick(this)">把所选输入框中的内容全部转为大写</button>
+        <button id="s10" onclick="on_sclick(this)">把所选输入框中的内容全部转为小写</button>
+        <button id="s11" onclick="on_sclick(this)">把所选输入框中内容的半角空格全部去除</button>
+        <button id="s12" onclick="on_sclick(this)">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+    </div>
+    <p id="sresult"></p>
 
     <script>
         function $(eid) {
@@ -67,7 +100,7 @@
                     break;
                 case "2":
                     if (!checkab(a, b)) return;
-                    result = Math.round(a*Math.pow(10, b))/Math.pow(10, b);
+                    result = Math.round(a * Math.pow(10, b)) / Math.pow(10, b);
                     break;
                 case "3":
                     if (!checkn(n)) return;
@@ -99,6 +132,125 @@
             $("result").innerHTML = result;
         }
 
+        function on_sclick(btn) {
+            var result;
+            var a = $("snum-a").value;
+            var b = $("snum-b").value;
+            var sa = $("str-a").value;
+            var sb = $("str-b").value;
+            var s = $("sradio-a").checked ? sa : sb;
+            switch (btn.id) {
+                case "s1":
+                    result = s.length;
+                    break;
+                case "s2":
+                    if (s.length >= 3) {
+                        result = s.charAt(2);
+                    }
+                    else {
+                        console.log("\"" + s + "\" len < 3");
+                    }
+                    break;
+                case "s3":
+                    result = sa.concat(sb);
+                    break;
+                case "s4":
+                    result = sa.indexOf(sb);
+                    break;
+                case "s5":
+                    result = sb.lastIndexOf(sa);
+                    break;
+                case "s6":
+                    result = s.slice(a, b);
+                    break;
+                case "s7": {
+                    var ss = s.split('\n');
+                    result = ss.length;
+                }
+                    break;
+                case "s8":
+                    result = s.substr(a, b);
+                    break;
+                case "s9":
+                    result = s.toUpperCase();
+                    break;
+                case "s10":
+                    result = s.toLowerCase();
+                    break;
+                case "s11":
+                    result = s.replace(/ /g, "");
+                    break;
+                case "s12":
+                    result = s.replace(/a/g, s == sa ? sb : sa);
+                    break;
+                default:
+                    break;
+            }
+            $("sresult").innerHTML = result;
+        }
+        /*
+        实现一个字符串头尾去除空格的函数
+        注意需要去除的空格，包括全角、半角空格
+        暂时不需要学习和使用正则表达式的方式
+        */
+        function diyTrim(str) {
+            if (!str.length) return str;
+
+            var first = 0;
+            var c = str.charAt(first)
+            while (c == ' ' || c == '　') {
+                ++first;
+                c = str.charAt(first);
+            }
+            var last = str.length - 1;
+            c = str.charAt(last);
+            while ((c == ' ' || c == '　') && last >= 0) {
+                --last;
+                c = str.charAt(last);
+            }
+
+            return str.slice(first, last + 1);
+        }
+
+        // 测试用例
+        console.log(diyTrim(" a f b    ")); // ->a f b
+        console.log(diyTrim("    ffdaf    ")); // ->ffdaf
+        console.log(diyTrim("1    ")); // ->1
+        console.log(diyTrim("　　f")); // ->f
+        console.log(diyTrim("  　  a f b 　　 ")); // ->a f b
+        console.log(diyTrim(" ")); // ->
+        console.log(diyTrim("　")); // ->
+        console.log(diyTrim("")); // ->
+
+        /*
+        去掉字符串str中，连续重复的地方
+        */
+        function removeRepetition(str) {
+            if (!str.length) return str;
+            var result = "";
+
+            var c = str.charAt(0);
+            result += c;
+            for (var i = 1; i < str.length; ++i) {
+                var cur = str.charAt(i);
+                if (cur == c) {
+                    continue;
+                }
+                else {
+                    c = cur;
+                    result += c;
+                }
+            }
+
+            return result;
+        }
+
+        // 测试用例
+        console.log(removeRepetition("aaa")); // ->a
+        console.log(removeRepetition("abbba")); // ->aba
+        console.log(removeRepetition("aabbaabb")); // ->abab
+        console.log(removeRepetition("")); // ->
+        console.log(removeRepetition("abc")); // ->abc
     </script>
 </body>
 
