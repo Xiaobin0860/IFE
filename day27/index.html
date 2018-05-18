@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <div id="year" style="display:inline"></div>
+    <div id="mon" style="display:inline"></div>
+    <div id="day" style="display:inline"></div>
+    <div id="time" style="display:inline"></div>
+    <div style="display: inline;">
+        <select id="year-select" onchange="on_change(this)"></select>
+        <select id="month-select" onchange="on_change(this)"></select>
+        <select id="day-select" onchange="on_change(this)"></select>
+    </div>
+    <div style="display:inline">
+        <select id="hour-select" onchange="on_change(this)"></select>:
+        <select id="minute-select" onchange="on_change(this)"></select>:
+        <select id="second-select" onchange="on_change(this)"></select>
+    </div>
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    <script>
+        function $(eid) {
+            return document.getElementById(eid);
+        }
+        function prefix(num, length) {
+            return (Array(length).join('0') + num).slice(-length);
+        }
+        var year_options = "";
+        for (var i = 2000; i <= 2032; ++i) {
+            year_options += '<option value="' + i + '">' + i + '年</option>';
+        }
+        var month_options = "";
+        for (var i = 1; i <= 12; ++i) {
+            month_options += '<option value="' + (i - 1) + '">' + prefix(i, 2) + '月</option>';
+        }
+        var day_options = "";
+        for (var i = 1; i <= 31; ++i) {
+            day_options += '<option value="' + i + '">' + prefix(i, 2) + '日</option>';
+        }
+        var hour_options = "";
+        for (var i = 0; i <= 23; ++i) {
+            hour_options += '<option value="' + i + '">' + prefix(i, 2) + '</option>';
+        }
+        var minute_options = "";
+        for (var i = 0; i <= 59; ++i) {
+            minute_options += '<option value="' + i + '">' + prefix(i, 2) + '</option>';
+        }
+        var second_options = "";
+        for (var i = 0; i <= 59; ++i) {
+            second_options += '<option value="' + i + '">' + prefix(i, 2) + '</option>';
+        }
+
+        $("year-select").innerHTML = year_options;
+        $("month-select").innerHTML = month_options;
+        $("day-select").innerHTML = day_options;
+        $("hour-select").innerHTML = hour_options;
+        $("minute-select").innerHTML = minute_options;
+        $("second-select").innerHTML = second_options;
+
+        function on_change(sel) {
+            console.log(sel, sel.value);
+        }
+
+        var weekday = [" 星期日", " 星期一", " 星期二", " 星期三", " 星期四", " 星期五", " 星期六"];
+        setInterval(function () {
+            var cur_date = new Date();
+            // console.log(cur_date);
+            var sel_date = new Date();
+            var year = $("year-select").value;
+            var month = $("month-select").value;
+            var day = $("day-select").value;
+            var hour = $("hour-select").value;
+            var minute = $("minute-select").value;
+            var second = $("second-select").value;
+            sel_date.setFullYear(year, month, day);
+            sel_date.setHours(hour);
+            sel_date.setMinutes(minute);
+            sel_date.setSeconds(second);
+            var sel_str = sel_date.toLocaleString() + weekday[sel_date.getDay()];
+            var off = (cur_date - sel_date) / 1000;
+            var days = Math.floor(Math.abs(off) / 86400);
+            var h = Math.floor((Math.abs(off) % 86400) / 3600);
+            var m = Math.floor((Math.abs(off) % 86400 % 3600) / 60);
+            var s = Math.floor(Math.abs(off) % 86400 % 3600 % 60);
+            // console.log(days, h, m, s);
+            var off_str = "现在距离 ";
+            if (off > 0) {
+                off_str += sel_str + " 已经过去 " + days + " 天 " + h + " 小时 " + m + " 分 " + s + " 秒";
+            }
+            else {
+                off_str += sel_str + " 还有 " + days + " 天 " + h + " 小时 " + m + " 分 " + s + " 秒";
+            }
+            $("result-wrapper").innerHTML = off_str;
+        }, 1000);
+    </script>
+</body>
+
+</html>
